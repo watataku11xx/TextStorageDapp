@@ -1,13 +1,15 @@
 async function main() {
   const TextStorage = await hre.ethers.getContractFactory("TextStorage");
-  const textStorageContract = await TextStorage.deploy("good, good");
+  const textStorageContract = await TextStorage.deploy("First Text");
   await textStorageContract.deployed();
   console.log("deployed to: ", textStorageContract.address);
   
   let tx = await textStorageContract.viewText();
   console.log(tx);
 
-  await textStorageContract.setText("Good, bye!");
+  let ts = await textStorageContract.setText("Good, bye!");
+  ts.wait();
+
   tx = await textStorageContract.viewText();
   console.log(tx);
 }
