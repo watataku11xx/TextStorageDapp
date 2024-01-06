@@ -51,15 +51,36 @@ export default function ButtonAppBar() {
 
   };
 
+  const disconnectWallet = async () => {
+    try {
+      const {ethereum} = window;
+      
+      await ethereum.request({
+        method: "wallet_revokePermissions",
+        params: [
+          {
+            "eth_accounts": {currentAccount}
+          }
+        ]
+      });
+      setCurrentAccount("");
+      console.log("Current account from disconnectWallet function", currentAccount);
+    } catch (error) {
+      console.log(error);
+    }
+
+  };
+
   const walletConnectButton = () => {
     return<>
-      <Button color="inherit" onClick={connectWallet}></Button>
+      <Button color="inherit" onClick={connectWallet}>Connect Wallet</Button>
     </>
   }
 
   const walletConnectedMessage = () => {
     return<>
       {"Your account address :" + currentAccount.substring(0, 4) + "..." + currentAccount.substring(38)}
+      <Button color="inherit" onClick={disconnectWallet}>disconnect Wallet</Button>
     </>
   }
 
