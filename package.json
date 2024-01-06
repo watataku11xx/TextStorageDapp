@@ -9,7 +9,9 @@
     ]
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "npm run deploy -w packages/contract",
+    "deploy:sepolia": "npm run deploy:sepolia -w packages/contract",
+    "test": "npm run test -w packages/contract"
   },
   "author": "",
   "license": "ISC"
