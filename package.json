@@ -11,7 +11,8 @@
   "scripts": {
     "deploy": "npm run deploy -w packages/contract",
     "deploy:sepolia": "npm run deploy:sepolia -w packages/contract",
-    "test": "npm run test -w packages/contract"
+    "test": "npm run test -w packages/contract",
+    "dev": "npm run dev -w packages/client"
   },
   "author": "",
   "license": "ISC"
